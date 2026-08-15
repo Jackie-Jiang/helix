@@ -738,10 +738,11 @@ public class HelixTaskExecutor implements MessageListener, TaskExecutor {
     // this is a potential area to improve. https://github.com/apache/helix/issues/1245
 
     StringBuilder sb = new StringBuilder();
-    // Log all tasks that fail to terminate
-    for (String taskId : _taskMap.keySet()) {
-      MessageTaskInfo info = _taskMap.get(taskId);
-      sb.append("Task: " + taskId + " fails to terminate. Message: " + info._task.getMessage() + "\n");
+    // Log all tasks that fail to terminate. Iterate entrySet() because each entry is read atomically: a task
+    // completing concurrently removes itself from the map, so keySet() + get() could observe a null value and NPE.
+    for (Map.Entry<String, MessageTaskInfo> entry : _taskMap.entrySet()) {
+      sb.append(
+          "Task: " + entry.getKey() + " fails to terminate. Message: " + entry.getValue()._task.getMessage() + "\n");
     }
 
     LOG.info(sb.toString());
