@@ -108,6 +108,8 @@ If there are 3 nodes in the cluster, then Helix will balance the leaders and sta
 Another typical example is evenly distributing a group of tasks among the currently healthy processes. For example, if there are 60 tasks and 4 nodes, Helix assigns 15 tasks to each node.
 When one node fails, Helix redistributes its 15 tasks to the remaining 3 nodes, resulting in a balanced 20 tasks per node. Similarly, if a node is added, Helix re-allocates 3 tasks from each of the 4 nodes to the 5th node, resulting in a balanced distribution of 12 tasks per node..
 
+While a resource stays in FULL_AUTO mode, individual partitions can be temporarily pinned to specific instances via user-defined preference lists in the ResourceConfig. See [Mixed Mode: Pinning Partition Placement in FULL_AUTO](./tutorial_mixed_mode.html).
+
 ### SEMI_AUTO
 
 When the application needs to control the placement of the replicas, use the SEMI_AUTO rebalance mode.

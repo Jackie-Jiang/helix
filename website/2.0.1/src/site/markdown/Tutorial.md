@@ -40,6 +40,7 @@ Convention: we first cover the _basic_ approach, which is the easiest to impleme
 2. [Spectator](./tutorial_spectator.html)
 3. [Controller](./tutorial_controller.html)
 4. [Rebalancing Algorithms](./tutorial_rebalance.html)
+    1. [Mixed Mode: Pinning Partition Placement in FULL_AUTO](./tutorial_mixed_mode.html)
 5. [User-Defined Rebalancing](./tutorial_user_def_rebalancer.html)
 6. [State Machines](./tutorial_state.html)
 7. [Messaging](./tutorial_messaging.html)
